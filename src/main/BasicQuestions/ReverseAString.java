@@ -1,8 +1,9 @@
 package src.main.BasicQuestions;
 
-//Reverse a string without using StringBuffer or StringBuilder classes
 public class ReverseAString {
     static void main() {
+
+        //Reverse a string without using StringBuffer or StringBuilder classes
         String str = "apple";
         String rev = "";
 
@@ -14,5 +15,17 @@ public class ReverseAString {
 
         System.out.println("Orginal String: "+str);
         System.out.println("Reversed string: "+rev);
+
+        //Using StringBUilder class
+        StringBuilder sb = new StringBuilder();
+        sb.append("madam");
+
+        StringBuilder reversed = sb.reverse();
+        if(reversed == sb){
+            System.out.println("Palindrome String");
+        }
+        else{
+            System.out.println("Not a palindrome String");
+        }
     }
 }
