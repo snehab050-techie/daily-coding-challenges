@@ -10,6 +10,7 @@ public class FindSecLargestNumber {
         int[] nums = {10,30,45,72,88,85}; // ans = 72
         int max = 0;
 
+        // Looping to fetch max element from the array
         for(int i=0;i<nums.length;i++){
             if(nums[i] > max){
                 max = nums[i];
