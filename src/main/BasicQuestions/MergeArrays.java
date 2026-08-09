@@ -7,5 +7,6 @@ public class MergeArrays {
         int[] arr1 = {10,20,30,40};
         int[] arr2 = {50,60,70,80};
 
+
     }
 }
