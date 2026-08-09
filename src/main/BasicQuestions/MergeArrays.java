@@ -16,5 +16,12 @@ public class MergeArrays {
         System.arraycopy(arr2, 0, mergedArray, arr1.length, arr2.length);
 
         System.out.println(Arrays.toString(mergedArray));
+
+        // To merge more than two arrays - 3 arrays merging
+        int[] arr3 = {90,100,110,120};
+        int[] threeArrMerge = new int[mergedArray.length + arr3.length];
+        System.arraycopy(mergedArray, 0, threeArrMerge, 0, mergedArray.length);
+        System.arraycopy(arr3, 0, threeArrMerge, mergedArray.length, arr3.length);
+        System.out.println(Arrays.toString(threeArrMerge));
     }
 }
