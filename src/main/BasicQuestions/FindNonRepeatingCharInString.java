@@ -9,7 +9,7 @@ import java.util.Map;
 public class FindNonRepeatingCharInString {
 
     static void main() {
-        String name = "madm";
+        String name = "swiss";
 
         HashMap<Character,Integer> map = new LinkedHashMap<>();
         //changed to Linked HM - as it maintains insertion order & we want to fetch the first character
@@ -19,13 +19,10 @@ public class FindNonRepeatingCharInString {
             map.put(c,map.getOrDefault(c,0)+1);
         }
 
-//        System.out.println(map);
-        char minChar;
-        int count = 1;
         for(Map.Entry<Character,Integer> et:map.entrySet()){
             if(et.getValue() == 1){
-                minChar = et.getKey();
-                System.out.println("The non repeating char is: "+minChar+" with count "+et.getValue());
+                System.out.println("The first non repeating character in the string is: "+et.getKey());
+                break;
             }
         }
     }
