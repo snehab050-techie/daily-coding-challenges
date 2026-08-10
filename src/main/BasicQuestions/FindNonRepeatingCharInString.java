@@ -1,6 +1,7 @@
 package src.main.BasicQuestions;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 // Find the First non-repeating character in string
@@ -10,7 +11,8 @@ public class FindNonRepeatingCharInString {
     static void main() {
         String name = "madm";
 
-        HashMap<Character,Integer> map = new HashMap<>();
+        HashMap<Character,Integer> map = new LinkedHashMap<>();
+        //changed to Linked HM - as it maintains insertion order & we want to fetch the first character
 
         char[] arr = name.toCharArray();
         for(Character c: arr){
