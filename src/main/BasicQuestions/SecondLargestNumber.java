@@ -15,6 +15,19 @@ public class SecondLargestNumber {
 
         //Without using built in methods
 
+        int largest = Integer.MIN_VALUE;
+        int seclargest = Integer.MIN_VALUE;
+
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] > largest){
+                seclargest = largest;
+                largest = nums[i];
+            } else if (nums[i] > seclargest && nums[i]!=largest) {
+                seclargest = nums[i];
+            }
+        }
+        System.out.println("First largest number: "+largest);
+        System.out.println("Second largest number: "+seclargest);
 
     }
 }
