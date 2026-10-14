@@ -1,4 +1,4 @@
-// Toggle String program
+package src.main.BasicQuestions;// Toggle String program
 
 public class ToggleStringProgram {
     static void main() {

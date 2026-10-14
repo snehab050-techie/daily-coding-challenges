@@ -1,5 +1,7 @@
 package src.main.BasicQuestions;
 
+import java.util.Arrays;
+
 //Program to find the sum and average of array elements
 public class SumAndAvgOfArrEle {
     static void main() {
