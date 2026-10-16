@@ -26,3 +26,13 @@ reduce() - reduces the list of values into a single value, usually used with ope
            // To find sum of values from a list
            Integer res = nums.stream()
                             .reduce(0, (a,b) -> (a+b));
+
+
+            Operation	           Purpose
+           forEach()  -	 Perform an action on each element
+           filter()	  -  Select matching elements
+            map()	  -  Transform each element
+           reduce()	  -  Combine elements into one result
+           count()	  -  Count the elements
+           min()      - Find the smallest number - stream().min
+           max()      - Find the largest number  - stream().max()
