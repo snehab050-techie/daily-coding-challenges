@@ -28,11 +28,15 @@ reduce() - reduces the list of values into a single value, usually used with ope
                             .reduce(0, (a,b) -> (a+b));
 
 
-            Operation	           Purpose
-           forEach()  -	 Perform an action on each element
-           filter()	  -  Select matching elements
-            map()	  -  Transform each element
-           reduce()	  -  Combine elements into one result
-           count()	  -  Count the elements
-           min()      - Find the smallest number - stream().min
-           max()      - Find the largest number  - stream().max()
+Operations & their Purpose
+----------------------------
+
+forEach() - Perform an action on each element
+filter() - Select matching elements
+map() - Transform each element
+reduce() - Combine elements into one result
+count() - Count the elements
+min() - Find the smallest number - stream().min
+max() - Find the largest number  - stream().max()
+sorted() - Sorts in natural order (ascending for integers).
+sorted(Comparator.reverseOrder()) -	Sorts in reverse order (descending for integers).
