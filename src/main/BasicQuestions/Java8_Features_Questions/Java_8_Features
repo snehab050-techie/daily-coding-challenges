@@ -20,3 +20,9 @@ Simple way :
 
 filter() = Which elements should I keep?
 map() = What should I change each element into?
+
+reduce() - reduces the list of values into a single value, usually used with operations like sum, avg, etc
+
+           // To find sum of values from a list
+           Integer res = nums.stream()
+                            .reduce(0, (a,b) -> (a+b));
