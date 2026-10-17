@@ -50,5 +50,8 @@ max() - Find the largest number  - stream().max()
 sorted() - Sorts in natural order (ascending for integers).
 sorted(Comparator.reverseOrder()) -	Sorts in reverse order (descending for integers).
 distinct() - operation removes duplicate elements from a stream.
-findFirst() — gets the first matching character.
-orElse(null) — returns null if no character is found.
+findFirst() - gets the first matching character.
+orElse(null) - returns null if no character is found.
+groupingBy() - groups identical characters together.
+Function.identity() — uses each character itself as the group key.
+counting() - counts how many characters are in each group.
