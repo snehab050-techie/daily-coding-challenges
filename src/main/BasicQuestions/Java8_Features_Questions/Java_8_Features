@@ -50,3 +50,5 @@ max() - Find the largest number  - stream().max()
 sorted() - Sorts in natural order (ascending for integers).
 sorted(Comparator.reverseOrder()) -	Sorts in reverse order (descending for integers).
 distinct() - operation removes duplicate elements from a stream.
+findFirst() — gets the first matching character.
+orElse(null) — returns null if no character is found.
