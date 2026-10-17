@@ -1,6 +1,15 @@
 A lambda expression lets us write an action in a shorter way without creating a separate class or writing
 a lengthy anonymous class.
 
+Streams API
+-------------
+
+Streams provide us a way to process collection of data.
+
+Instead of manually writing loops, streams provide operations like
+filter(), sorted(), map(), min(), max(), reduce() etc to process the collection of objects easily
+in a more readable, easier to understand and concise code.
+
 filter() is an intermediate operation; it sets up the filtering step. forEach() is a terminal operation;
 it triggers processing and prints the results. Streams are generally processed when a terminal operation
 is invoked.
@@ -40,3 +49,4 @@ min() - Find the smallest number - stream().min
 max() - Find the largest number  - stream().max()
 sorted() - Sorts in natural order (ascending for integers).
 sorted(Comparator.reverseOrder()) -	Sorts in reverse order (descending for integers).
+distinct() - operation removes duplicate elements from a stream.
