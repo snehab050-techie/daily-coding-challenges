@@ -19,5 +19,13 @@ public class FindFirstNonRepeatChar {
                 .orElse(null);
 
         System.out.println(res);
+
+        //Program to find the first repeating character in a string using Java 8 features
+        Character nch = str.chars()
+                .mapToObj(c -> (char) c)
+                .filter(ch -> str.indexOf(ch) != str.lastIndexOf(ch))
+                .findFirst()
+                .orElse(null);
+        System.out.println(nch);
     }
 }
