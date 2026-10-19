@@ -10,9 +10,12 @@ public class FindFreqOfWordsInSen {
     static void main() {
 
         // Find the frequency of each word in a sentence
+        String str = "java spring java sql spring java";
 
-
-
+        String[] words = str.split(" ");
+        Map<String,Long> res = Arrays.stream(words)
+                .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        res.forEach((key, value)-> System.out.println(key+" - "+value));
 
     }
 }
