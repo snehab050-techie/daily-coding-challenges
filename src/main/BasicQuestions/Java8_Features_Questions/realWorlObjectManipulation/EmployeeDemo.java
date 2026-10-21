@@ -47,5 +47,14 @@ public class EmployeeDemo {
                 .collect(Collectors.toList());
 
         sortedEmp.forEach(System.out::println);
+
+        // Q4. Highest Paid employee in entire company
+        System.out.println("----- Highest paid emp--------");
+         Employee emp = employees.stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+                .findFirst()
+                 .orElse(null);
+
+        System.out.println(emp);
     }
 }
