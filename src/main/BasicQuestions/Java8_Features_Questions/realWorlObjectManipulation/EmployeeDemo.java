@@ -40,5 +40,12 @@ public class EmployeeDemo {
         highestPaidEmpByDept.forEach((dept, optEmp) ->
                 System.out.println(dept+" -> "+optEmp.orElse(null))
         );
+
+        //Q3. Sort the list of employees by their salary in descending order
+        List<Employee> sortedEmp = employees.stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+                .collect(Collectors.toList());
+
+        sortedEmp.forEach(System.out::println);
     }
 }
