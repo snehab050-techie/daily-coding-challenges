@@ -1,9 +1,6 @@
 package src.main.BasicQuestions.Java8_Features_Questions.realWorlObjectManipulation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class EmployeeDemo {
@@ -32,6 +29,16 @@ public class EmployeeDemo {
                 {System.out.println("Department: "+dept);
                  empList.forEach(emp -> System.out.println(" "+emp.getName()));
                 }
+        );
+
+        //Q2. Find the highest-paid employee in each department
+        System.out.println("--- Highest-paid employee in each department ----");
+        Map<String, Optional<Employee>> highestPaidEmpByDept = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))
+                ));
+
+        highestPaidEmpByDept.forEach((dept, optEmp) ->
+                System.out.println(dept+" -> "+optEmp.orElse(null))
         );
     }
 }
