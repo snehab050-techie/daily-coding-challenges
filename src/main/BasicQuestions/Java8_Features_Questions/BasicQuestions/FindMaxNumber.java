@@ -24,5 +24,12 @@ public class FindMaxNumber {
                 .min(Integer::compareTo);
         min.ifPresent(System.out::println);
 
+        // alternative solution
+        List<Integer> numbers = Arrays.asList(10, 15, 8, 49, 25, 98, 32);
+
+        int maxNum = numbers.stream().max(Integer::compare).orElseThrow();
+        int minNum = numbers.stream().min(Integer::compare).orElseThrow();
+
+        System.out.println("Max: " + max + ", Min: " + min);
     }
 }

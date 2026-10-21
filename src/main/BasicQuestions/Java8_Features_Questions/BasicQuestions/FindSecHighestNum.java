@@ -15,5 +15,15 @@ public class FindSecHighestNum {
                 .toList().get(1);
 
         System.out.println(res);
+
+        // alternative
+        List<Integer> numbers = Arrays.asList(10, 15, 8, 49, 25, 98, 32);
+
+        Integer secondHighest = numbers.stream()
+                .sorted(Comparator.reverseOrder())
+                .skip(1) // Skip the highest
+                .findFirst()
+                .orElseThrow();
+        System.out.println(secondHighest);
     }
 }
