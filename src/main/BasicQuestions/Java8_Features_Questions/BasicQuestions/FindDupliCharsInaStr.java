@@ -16,5 +16,19 @@ public class FindDupliCharsInaStr {
                 .filter(ch-> str.indexOf(ch) != str.lastIndexOf(ch))
                         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         res.forEach((key, value) -> System.out.println(key+" - "+value));
+
+        //tried alternate
+        //find duplicate char in a str
+
+        String s = "swissi";
+
+        Map<Character, Long> map = s.chars()
+                .mapToObj(c-> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() >=2)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        System.out.println(map);
     }
 }
