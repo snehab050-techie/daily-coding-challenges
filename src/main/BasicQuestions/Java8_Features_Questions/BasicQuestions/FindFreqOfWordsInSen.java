@@ -17,5 +17,10 @@ public class FindFreqOfWordsInSen {
                 .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
         res.forEach((key, value)-> System.out.println(key+" - "+value));
 
+        // or directly print key value pair
+        Arrays.stream(str.split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .forEach((key,value) -> System.out.println(key+" - "+value));
+
     }
 }
