@@ -19,5 +19,11 @@ public class FindEvenNumbers {
         nums.stream()
                 .filter(n -> n % 2 == 0)
                 .forEach(System.out::println);
+
+        // Program to find odd numbers
+        System.out.println("-----odd numbers-------");
+        nums.stream()
+                .filter(n -> n % 2 != 0)
+                .forEach(System.out::println);
     }
 }
