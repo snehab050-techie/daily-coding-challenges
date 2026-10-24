@@ -8,12 +8,12 @@ public class EmployeeDemo {
 
         // 1. Create a dummy list of employees
         List<Employee> employees = Arrays.asList(
-                new Employee("Amit", 26, 50000, "IT"),
-                new Employee("Priya", 30, 85000, "HR"),
-                new Employee("Rahul", 24, 45000, "IT"),
-                new Employee("Sneha", 28, 90000, "Finance"),
-                new Employee("Vikram", 35, 75000, "HR"),
-                new Employee("Anjali", 32, 95000, "Finance")
+                new Employee("Amit", 26, 500, "IT"),
+                new Employee("Priya", 30, 850, "HR"),
+                new Employee("Rahul", 24, 450, "IT"),
+                new Employee("Sneha", 28, 900, "Finance"),
+                new Employee("Vikram", 35, 750, "HR"),
+                new Employee("Anjali", 32, 570, "Finance")
         );
 
         System.out.println("---------------All Employees------------------");
@@ -58,5 +58,12 @@ public class EmployeeDemo {
         System.out.println(emp);
 
         //Q5. Find the top three highest-paid employees
+        System.out.println("---------------");
+        employees.stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+                .toList()
+                .subList(0,3)
+                .forEach(e -> System.out.println(e.getName()+" - "+e.getSalary()));
+
     }
 }
