@@ -65,5 +65,13 @@ public class EmployeeDemo {
                 .subList(0,3)
                 .forEach(e -> System.out.println(e.getName()+" - "+e.getSalary()));
 
+        //Q6. Find the average salary of all employees in each department
+        System.out.println("-----------------------");
+        Map<String, Double> res = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)));
+
+        res.forEach((dept, avgSalary) ->
+                System.out.println(dept+" : "+avgSalary)
+        );
     }
 }
