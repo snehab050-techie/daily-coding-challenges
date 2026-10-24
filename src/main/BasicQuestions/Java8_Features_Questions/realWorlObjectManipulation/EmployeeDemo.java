@@ -73,5 +73,13 @@ public class EmployeeDemo {
         res.forEach((dept, avgSalary) ->
                 System.out.println(dept+" : "+avgSalary)
         );
+
+        System.out.println("----------------------");
+        // Print the number of employees in each depratment
+        Map<String, Long> numOfEmp = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
+        numOfEmp.forEach(
+                (dept, num) -> System.out.println(dept+" - "+num)
+        );
     }
 }
