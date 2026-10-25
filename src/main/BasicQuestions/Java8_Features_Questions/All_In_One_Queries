@@ -1,0 +1,82 @@
+Level 1 — Beginner (0–1 year)
+Focus: Understanding Lambda expressions, Stream basics, and simple operations.
+
+BASIC STREAM OPERATIONS
+----------------------------
+
+1. Find all even numbers from a List<Integer>
+2. Find all odd numbers from a List<Integer>
+3. Find numbers greater than 10
+4. Find numbers divisible by 5
+5. Square every number using map()
+6. Convert a List<String> to uppercase
+7. Convert a List<String> to lowercase
+8. Find the count of elements using count()
+9. Find the maximum number using max()
+10. Find the minimum number using min()
+11. Find the sum of all numbers using sum()
+12. Sort numbers in ascending order
+13. Sort numbers in descending order
+14. Remove duplicate elements using distinct()
+15. Print each element using forEach()
+
+Level 2 - Intermediate (1–2 years)
+Focus: String manipulation, frequency counting, and practical Stream combinations.
+----------------------------------------------
+
+16. Find duplicate numbers in a List
+17. Find unique numbers in a List
+18. Find the first non-repeated character in a String
+19. Find the first repeated character in a String
+20. Count the frequency of each character
+21. Count the frequency of each word in a sentence
+22. Find duplicate characters in a String
+23. Find the frequency of each number using groupingBy()
+24. Find the second-highest number in a List
+25. Find the second-lowest number in a List
+26. Find the longest String in a List
+27. Find Strings starting with a particular letter
+28. Sort Strings alphabetically
+29. Sort Strings by their length
+30. Check whether two Strings are anagrams using Streams
+
+Level 3 - Advanced (2–3 years)
+Focus: Employee objects, grouping, collectors, and Map operations.
+-------------------------------------------
+
+31. Find the highest-paid employee
+32. Find the second-highest-paid employee
+33. Find the top 3 highest-paid employees
+34. Group employees by department
+35. Count employees in each department
+36. Find the highest-paid employee in each department
+37. Find the average salary of employees
+38. Find the total salary of each department
+39. Find employees earning above the average salary
+40. Sort employees by salary
+41. Sort employees by department and salary
+42. Convert a List<Employee> into a Map<EmployeeId, Employee>
+43. Handle duplicate keys while converting List to Map
+44. Sort a Map by its values
+45. Partition employees into salary-based groups
+
+
+Level 4 - Experienced (3–4 years)
+Focus: Complex Stream pipelines, flatMap(), Optional, and advanced collectors.
+-----------------------------------------------------------
+
+46. Flatten a List<List<Integer>> using flatMap()
+47. Find distinct words from a List<String> sentences
+48. Find the most frequent element in a List
+49. Find the top 2 employees in each department
+50. Find the highest-paid employee across all departments
+51. Group employees by department and designation
+52. Group employees by department and calculate average salary
+53. Find the department with the highest average salary
+54. Find the first non-repeated character using groupingBy() and LinkedHashMap
+55. Find duplicate elements using a Set and filter()
+56. Use reduce() to calculate product of numbers
+57. Use reduce() to concatenate Strings
+58. Use Optional to find and handle a missing employee
+59. Find the longest word across multiple sentences
+60. Create a custom Collector to collect employee names
