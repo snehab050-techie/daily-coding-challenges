@@ -1,0 +1,98 @@
+package src.main.BasicQuestions.Java8_Features_Questions.AllInOneQueries;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class EmployeeImpl {
+    static void main(String[] args) {
+
+        List<EmployeeDetails> employeeDetailsList = Arrays.asList(
+                new EmployeeDetails(101, "Sneha", 89000, "IT"),
+                new EmployeeDetails(102, "Suhas", 95000, "Finance"),
+                new EmployeeDetails(103, "Janu", 69000, "Marketing"),
+                new EmployeeDetails(104, "Arun", 56000, "HR"),
+                new EmployeeDetails(105, "Rahul", 49000, "IT"),
+                new EmployeeDetails(106, "Alis", 23000, "Finance"),
+                new EmployeeDetails(107, "Mark", 68000, "IT"),
+                new EmployeeDetails(108, "Steve", 97000, "HR")
+        );
+
+//        System.out.println(employeeDetailsList);
+
+        // 1) Find the highest-paid employee
+        EmployeeDetails highSalaryEmployee = employeeDetailsList.stream()
+                .sorted(Comparator.comparingInt(EmployeeDetails::getSalary).reversed())
+                .findFirst()
+                .orElseThrow();
+
+        System.out.println(highSalaryEmployee);
+
+        // 2) Find the second-highest-paid employee
+
+        EmployeeDetails secHighPaidEmp = employeeDetailsList.stream()
+                .sorted(Comparator.comparingInt(EmployeeDetails::getSalary).reversed())
+                .skip(1)
+                .findFirst()
+                .orElseThrow();
+
+        System.out.println(secHighPaidEmp);
+
+        System.out.println("--------------------");
+        // 3) Find the top 3 highest-paid employees
+        employeeDetailsList.stream()
+                .sorted(Comparator.comparingInt(EmployeeDetails::getSalary).reversed())
+                .limit(3)
+                .forEach(System.out::println);
+
+        System.out.println("-------------");
+        // 4) Group employees by department
+        Map<String, List<EmployeeDetails>> eempByDept = employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName));
+
+        eempByDept.forEach((dept, empList) ->
+                {
+                    System.out.println(dept + " - ");
+                    empList.forEach(e -> System.out.println(e.getName()));
+                }
+        );
+
+        //5) Count employees in each department
+        Map<String, Long> empCountDeptWise = employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName, Collectors.counting()));
+
+        empCountDeptWise.forEach((dept, count) -> System.out.println(dept + " - " + count));
+
+        // 6) Find the highest-paid employee in each department
+        System.out.println("------------");
+        Map<String, Optional<EmployeeDetails>> highPaidEmpDeptWise = employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName, Collectors.maxBy(Comparator.comparingInt(EmployeeDetails::getSalary))));
+
+        highPaidEmpDeptWise.forEach((dept, empList) ->
+        {
+            System.out.println(dept + " - ");
+            System.out.println(empList);
+        });
+
+        // 7) Find the average salary of employees in entire company
+        System.out.println("------------entire avg sal");
+        Double avgSal = employeeDetailsList.stream()
+                .collect(Collectors.averagingDouble(EmployeeDetails::getSalary));
+
+        System.out.println(avgSal);
+
+        // Find the average salary of employees in each department
+        System.out.println("--------avg sal dept wise");
+        Map<String, Double> avgSalDeptWise = employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName, Collectors.averagingDouble(EmployeeDetails::getSalary)));
+
+        avgSalDeptWise.forEach((dept, asal) -> System.out.println(dept + " - " + asal));
+
+        // 8) Find the total salary of each department
+        System.out.println("---------total sal dept wise");
+        employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName, Collectors.summingDouble(EmployeeDetails::getSalary)))
+                .forEach((key, value) -> System.out.println(key + " - " + value));
+
+        // 9) Find employees earning above the average salary
+    }
+}
