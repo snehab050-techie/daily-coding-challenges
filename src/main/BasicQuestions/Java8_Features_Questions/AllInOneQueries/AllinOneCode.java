@@ -3,8 +3,29 @@ package src.main.BasicQuestions.Java8_Features_Questions.AllInOneQueries;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class AllinOneCode {
+
+    public static boolean isAngramStreamString(String str1, String str2){
+         if(str1 == null || str2 == null || str1.length() != str2.length()){
+             return false;
+         }
+
+        String sorted1 = Stream.of(str1.split(""))
+                .map(String::toLowerCase)
+                .sorted()
+                .collect(Collectors.joining());
+
+         String sorted2 = Stream.of(str2.split(""))
+                 .map(String::toLowerCase)
+                 .sorted()
+                 .collect(Collectors.joining());
+
+         return sorted1.equals(sorted2);
+    }
+
+
     static void main() {
 
         /* 1. Find all even numbers from a List<Integer>
@@ -268,5 +289,12 @@ public class AllinOneCode {
         System.out.println("-------------30---check whether two strings are anagrams using streams");
         String str1 = "Silent";
         String str2 = "Listen";
+
+        if(AllinOneCode.isAngramStreamString(str1,str2)){
+            System.out.println("Anagram strings!");
+        }
+        else{
+            System.out.println("Not anagram strings");
+        }
     }
 }
