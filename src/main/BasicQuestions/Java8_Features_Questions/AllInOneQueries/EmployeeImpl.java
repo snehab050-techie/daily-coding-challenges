@@ -1,6 +1,7 @@
 package src.main.BasicQuestions.Java8_Features_Questions.AllInOneQueries;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class EmployeeImpl {
@@ -124,5 +125,52 @@ public class EmployeeImpl {
                 .collect(Collectors.toList());
 
         result.forEach(System.out::println);
+
+        // -- sort empoyees by salary
+        System.out.println("---------------------sort emp by salary");
+
+        //sorted in ASC
+        List<EmployeeDetails> empList = employeeDetailsList.stream()
+                .sorted(Comparator.comparingDouble(EmployeeDetails::getSalary))
+                .collect(Collectors.toList());
+
+        empList.forEach(System.out::println);
+
+        // sorted in DESC
+        System.out.println("-----------in DESC order");
+       List<EmployeeDetails> list = employeeDetailsList.stream()
+                .sorted(Comparator.comparingDouble(EmployeeDetails::getSalary).reversed())
+                .collect(Collectors.toList());
+
+       list.forEach(System.out::println);
+
+       // sort employees based on salary within their own department - ASC order
+        System.out.println("----------------");
+       Map<String, List<EmployeeDetails>> empDetailsList = employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName,
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                lvalue -> lvalue.stream()
+                                        .sorted(Comparator.comparingDouble(EmployeeDetails::getSalary))
+                                        .collect(Collectors.toList())
+                        )));
+
+       empDetailsList.forEach((key, value) -> System.out.println(key+" - "+value));
+
+       // -- sorted employees based on salary within their own department - DESC order
+        System.out.println("-------------------in desc order");
+        employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName,
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                listEle -> listEle.stream()
+                                        .sorted(Comparator.comparingDouble(EmployeeDetails::getSalary).reversed())
+                        ))).forEach((dept, employeeList) ->
+                {
+                    System.out.println(dept+" - ");
+                    employeeList.forEach(System.out::println);
+                    System.out.println();
+                });
+
     }
 }
