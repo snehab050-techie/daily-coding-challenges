@@ -1,0 +1,57 @@
+A lambda expression lets us write an action in a shorter way without creating a separate class or writing
+a lengthy anonymous class.
+
+Streams API
+-------------
+
+Streams provide us a way to process collection of data.
+
+Instead of manually writing loops, streams provide operations like
+filter(), sorted(), map(), min(), max(), reduce() etc to process the collection of objects easily
+in a more readable, easier to understand and concise code.
+
+filter() is an intermediate operation; it sets up the filtering step. forEach() is a terminal operation;
+it triggers processing and prints the results. Streams are generally processed when a terminal operation
+is invoked.
+
+map() vs filter()
+---------------------
+
+filter() - removes elements that don't satisfy the condition.
+
+            .filter(n -> n % 2 == 0)
+
+map() - transforms elements - Transforms each element into another value; it doesn't filter elements out.
+
+        .map(name -> name.toUpperCase())
+
+Simple way :
+
+filter() = Which elements should I keep?
+map() = What should I change each element into?
+
+reduce() - reduces the list of values into a single value, usually used with operations like sum, avg, etc
+
+           // To find sum of values from a list
+           Integer res = nums.stream()
+                            .reduce(0, (a,b) -> (a+b));
+
+
+Operations & their Purpose
+----------------------------
+
+forEach() - Perform an action on each element
+filter() - Select matching elements
+map() - Transform each element
+reduce() - Combine elements into one result
+count() - Count the elements
+min() - Find the smallest number - stream().min
+max() - Find the largest number  - stream().max()
+sorted() - Sorts in natural order (ascending for integers).
+sorted(Comparator.reverseOrder()) -	Sorts in reverse order (descending for integers).
+distinct() - operation removes duplicate elements from a stream.
+findFirst() - gets the first matching character.
+orElse(null) - returns null if no character is found.
+groupingBy() - groups identical characters together.
+Function.identity() — uses each character itself as the group key.
+counting() - counts how many characters are in each group.

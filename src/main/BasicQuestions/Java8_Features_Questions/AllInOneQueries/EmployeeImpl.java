@@ -98,7 +98,7 @@ public class EmployeeImpl {
 
         System.out.println("-------------------");
         // above avg salary of entire company
-       double avgSalary = employeeDetailsList
+        double avgSalary = employeeDetailsList
                 .stream()
                 .mapToDouble(EmployeeDetails::getSalary)
                 .average()
@@ -106,10 +106,10 @@ public class EmployeeImpl {
 
         System.out.println(avgSalary);
 
-       List<EmployeeDetails> empSalAboveAvgSalComp = employeeDetailsList
-               .stream()
-               .filter( emp -> emp.getSalary() > avgSalary)
-               .collect(Collectors.toList());
+        List<EmployeeDetails> empSalAboveAvgSalComp = employeeDetailsList
+                .stream()
+                .filter(emp -> emp.getSalary() > avgSalary)
+                .collect(Collectors.toList());
 
         empSalAboveAvgSalComp.forEach(System.out::println);
 
@@ -138,15 +138,15 @@ public class EmployeeImpl {
 
         // sorted in DESC
         System.out.println("-----------in DESC order");
-       List<EmployeeDetails> list = employeeDetailsList.stream()
+        List<EmployeeDetails> list = employeeDetailsList.stream()
                 .sorted(Comparator.comparingDouble(EmployeeDetails::getSalary).reversed())
                 .collect(Collectors.toList());
 
-       list.forEach(System.out::println);
+        list.forEach(System.out::println);
 
-       // sort employees based on salary within their own department - ASC order
+        // sort employees based on salary within their own department - ASC order
         System.out.println("----------------");
-       Map<String, List<EmployeeDetails>> empDetailsList = employeeDetailsList.stream()
+        Map<String, List<EmployeeDetails>> empDetailsList = employeeDetailsList.stream()
                 .collect(Collectors.groupingBy(EmployeeDetails::getDeptName,
                         Collectors.collectingAndThen(
                                 Collectors.toList(),
@@ -155,9 +155,9 @@ public class EmployeeImpl {
                                         .collect(Collectors.toList())
                         )));
 
-       empDetailsList.forEach((key, value) -> System.out.println(key+" - "+value));
+        empDetailsList.forEach((key, value) -> System.out.println(key + " - " + value));
 
-       // -- sorted employees based on salary within their own department - DESC order
+        // -- sorted employees based on salary within their own department - DESC order
         System.out.println("-------------------in desc order");
         employeeDetailsList.stream()
                 .collect(Collectors.groupingBy(EmployeeDetails::getDeptName,
@@ -167,10 +167,29 @@ public class EmployeeImpl {
                                         .sorted(Comparator.comparingDouble(EmployeeDetails::getSalary).reversed())
                         ))).forEach((dept, employeeList) ->
                 {
-                    System.out.println(dept+" - ");
+                    System.out.println(dept + " - ");
                     employeeList.forEach(System.out::println);
                     System.out.println();
                 });
 
+        // Convert a List<Employee> into a Map<EmployeeId, Employee>
+        System.out.println("------------ map every emp to id");
+        Map<Integer, EmployeeDetails> mappedEmployeeToId = employeeDetailsList.stream()
+                .collect(Collectors.toMap(EmployeeDetails::getId, employee -> employee));
+
+        // OR
+       /* Map<Integer, EmployeeDetails> employeeMap =
+                employeeDetailsList.stream()
+                        .collect(Collectors.toMap(
+                                EmployeeDetails::getId,
+                                Function.identity()
+                        ));*/
+
+        mappedEmployeeToId.forEach((id, emp) ->
+        {
+            System.out.println(id + " - ");
+            System.out.println(emp);
+            System.out.println();
+        });
     }
 }
