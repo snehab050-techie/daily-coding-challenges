@@ -94,5 +94,35 @@ public class EmployeeImpl {
                 .forEach((key, value) -> System.out.println(key + " - " + value));
 
         // 9) Find employees earning above the average salary
+
+        System.out.println("-------------------");
+        // above avg salary of entire company
+       double avgSalary = employeeDetailsList
+                .stream()
+                .mapToDouble(EmployeeDetails::getSalary)
+                .average()
+                .orElse(0.0);
+
+        System.out.println(avgSalary);
+
+       List<EmployeeDetails> empSalAboveAvgSalComp = employeeDetailsList
+               .stream()
+               .filter( emp -> emp.getSalary() > avgSalary)
+               .collect(Collectors.toList());
+
+        empSalAboveAvgSalComp.forEach(System.out::println);
+
+        //above avg salary of their own department
+
+        System.out.println("--------------");
+        Map<String, Double> deptAvgSal = employeeDetailsList.stream()
+                .collect(Collectors.groupingBy(EmployeeDetails::getDeptName, Collectors.averagingDouble(EmployeeDetails::getSalary)));
+
+        System.out.println(deptAvgSal);
+        List<EmployeeDetails> result = employeeDetailsList.stream()
+                .filter(emp -> emp.getSalary() > deptAvgSal.get(emp.getDeptName()))
+                .collect(Collectors.toList());
+
+        result.forEach(System.out::println);
     }
 }
