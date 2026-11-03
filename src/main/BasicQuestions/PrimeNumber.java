@@ -23,5 +23,21 @@ public class PrimeNumber {
                 System.out.println(i);
             }
         }
+
+        //simple alternative
+        int num = 7;
+        boolean b = true;
+
+        for(int i=2;i<num;i++){
+            if(num % i == 0){
+                System.out.println("not a prime number");
+                b = false;
+                break;
+            }
+        }
+
+        if(b){
+            System.out.println("prime number");
+        }
     }
 }
