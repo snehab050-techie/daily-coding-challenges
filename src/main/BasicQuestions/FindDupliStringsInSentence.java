@@ -27,5 +27,31 @@ public class FindDupliStringsInSentence {
             }
         }
         System.out.println("Duplicate strings are: "+res);
+
+        //Alternative solutions
+        String sentence = "Hey I enjoy java enjoy I";
+
+        String[] arr = sentence.toLowerCase().split(" ");
+        Map<String, Integer> map = new HashMap<>();
+
+        for(String str: arr){
+            map.put(str, map.getOrDefault(str, 0)+1);
+        }
+
+        for(Map.Entry<String, Integer> entry : map.entrySet()){
+            if(entry.getValue() >= 2){
+                System.out.println(entry.getKey());
+            }
+        }
+
+        System.out.println("-----Using Streams API-----");
+        Map<String, Long> resMap = Arrays.stream(arr)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(entry->entry.getValue()>=2)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        System.out.println(resMap);
     }
 }
