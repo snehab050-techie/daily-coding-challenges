@@ -47,5 +47,12 @@ public class CountCharsInStr {
                 System.out.println("One time occring char in string: "+prodcut+" is: "+prodcut.charAt(i));
             }
         }
+
+        // program to find frequency of each character in a string using streams API
+          Map<Character, Long> res = str.chars()
+                .mapToObj(c->(char)c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        res.forEach((ch,count)-> System.out.println(ch+" - "+count));
     }
 }
