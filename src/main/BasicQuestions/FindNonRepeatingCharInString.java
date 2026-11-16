@@ -25,5 +25,27 @@ public class FindNonRepeatingCharInString {
                 break;
             }
         }
+
+        //Program to find last non-repeating char in string
+        //Eg: String str = "swissys"; //answer is y
+        String str ="swiss";
+        char[] arr = str.toCharArray();
+
+        Map<Character, Integer> map = new LinkedHashMap<>();
+
+        for(char c : arr){
+            map.put(c, map.getOrDefault(c, 0)+1);
+        }
+
+        char resChar = 'N';
+        for(Map.Entry<Character,Integer> res:map.entrySet()){
+            for(int i=0;i<arr.length-1;i++){
+                if(res.getValue() == 1){
+                    resChar = res.getKey();
+                }
+            }
+
+        }
+        System.out.println(resChar);
     }
 }
