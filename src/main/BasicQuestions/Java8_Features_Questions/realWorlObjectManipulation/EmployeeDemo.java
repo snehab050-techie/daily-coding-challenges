@@ -64,6 +64,12 @@ public class EmployeeDemo {
                 .toList()
                 .subList(0,3)
                 .forEach(e -> System.out.println(e.getName()+" - "+e.getSalary()));
+        // alternative
+        employees
+                .stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+                .limit(3)
+                .forEach(System.out::println);
 
         //Q6. Find the average salary of all employees in each department
         System.out.println("-----------------------");
